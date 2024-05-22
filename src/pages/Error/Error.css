@@ -1,0 +1,14 @@
+.bg_img {
+    background-image: url(../../assets/error.jpg);
+    height: 70vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: contain; */
+}
+
+.err-message {
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}

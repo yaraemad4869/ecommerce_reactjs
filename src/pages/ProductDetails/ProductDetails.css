@@ -1,0 +1,27 @@
+.card-img {
+    width: 100%;
+}
+
+/* div.container {
+    height: 450px;
+} */
+
+.col-12 {
+    display: block;
+}
+
+/* @media only screen and (max-width: 576) {
+     .col-12 {
+        display: block !important;
+    }
+
+    .col-12 * {
+        display: block !important;
+    }
+
+.d-flex {
+    flex-direction: column !important;
+}
+}
+
+*/

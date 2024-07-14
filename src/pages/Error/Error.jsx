@@ -8,9 +8,9 @@ const Error = ({ h1, p }) => {
         <>
             <div className="d-flex justify-content-center 
                     align-items-center flex-column 
-                    text-center w-100 container  mt-5">
+                    text-center w-100 container mt-5">
 
-                <div className="bg_img">
+                <div className="bg_img mt-3">
                 </div>
                 <div>
                     <h1 className={(isDark ? "text-warning" : "text-danger") + " err-message"}>{h1}</h1>

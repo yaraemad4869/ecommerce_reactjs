@@ -4,7 +4,8 @@ import "./Products.css";
 import DarkContext from "../../context/Dark/Dark";
 import ProductsContext from "../../context/Products/Products"
 import CategoryContext from "../../context/Category/Category"
-
+import I8nextContext from "../../context/Il8next/I8next";
+import { Link } from "react-router-dom";
 const Products = () => {
 
     // const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -12,6 +13,7 @@ const Products = () => {
     //     limit: 20,
     // });
     // console.log(productss);
+    const { t } = useContext(I8nextContext)
     const { category } = useContext(CategoryContext)
     const { isDark } = useContext(DarkContext);
     const { products, loading } = useContext(ProductsContext)
@@ -20,16 +22,18 @@ const Products = () => {
     return (
         <>
             <div className="container">
-                <h1 id="products" className={"display-4 mb-5 text-capitalize fw-bold " + (isDark ? "text-white" : "text-black")}>products</h1>
+                <div className={"d-flex justify-content-between align-items-baseline "}>
+                    <h1 id="products" className={"display-4 mb-5 text-capitalize fw-bold " + (isDark ? "text-white" : "text-black")}>{t("products")}</h1>
+                    <Link className={"h1 text-decoration-underline " + (isDark ? "text-warning" : "text-danger")} to="/products">{t("More")}</Link>
+                </div>
                 <div className={"d-flex row align-items-stretch my-5"}>
                     {!loading && (
-                        products.map((product) => {
+                        products.slice(0, 8).map((product) => {
                             product.count = 10
 
-                            if (category.toLowerCase() == "all" || category.toLowerCase() == product.category.toLowerCase()) {
+                            if (t(category.toLowerCase()) == t("all") || t(category.toLowerCase()) == t(product.category.toLowerCase())) {
 
                                 return (
-
                                     <Product key={product.id} product={product} />
                                 )
                             }

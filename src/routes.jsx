@@ -9,6 +9,10 @@ import Cart from "./pages/Cart/Cart";
 import Search from "./pages/Search/Search";
 import Faq from "./pages/FAQ/Faq";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import Products from "./pages/Products/Products";
+import Featured from "./pages/Featured/Featured";
+import TopRated from "./pages/TopRated/TopRated";
+import Popular from "./pages/Popular/Popular";
 
 const routes = createBrowserRouter([
     {
@@ -33,8 +37,32 @@ const routes = createBrowserRouter([
 
             },
             {
+                path: "/products",
+                element: <Products />,
+                errorElement: <Error h1={"Can't Show Products"} p={"Sorry, Our team are working on this problem , please try soon..."} />
+
+            },
+            {
                 path: "/products/:id",
                 element: <ProductDetails />,
+                errorElement: <Error h1={"Can't Show Product"} p={"Sorry, Our team are working on this problem , please try soon..."} />
+
+            },
+            {
+                path: "/top_rated",
+                element: <TopRated />,
+                errorElement: <Error h1={"Can't Show Product"} p={"Sorry, Our team are working on this problem , please try soon..."} />
+
+            },
+            {
+                path: "/popular",
+                element: <Popular />,
+                errorElement: <Error h1={"Can't Show Product"} p={"Sorry, Our team are working on this problem , please try soon..."} />
+
+            },
+            {
+                path: "/featured",
+                element: <Featured />,
                 errorElement: <Error h1={"Can't Show Product"} p={"Sorry, Our team are working on this problem , please try soon..."} />
 
             },
@@ -46,7 +74,7 @@ const routes = createBrowserRouter([
             {
                 path: "/search",
                 element: <Search />,
-                errorElement: <Error h1={"Can't provide Search tool"} p={"Sorry, Our team are working on this problem , please try soon..."} />
+                errorElement: <Error h1={"Can't Provide Search Tool"} p={"Sorry, Our team are working on this problem , please try soon..."} />
             },
             {
                 path: "/faq",
@@ -60,7 +88,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "*",
-                errorElement: <Error h1={"page not found"} p={"this page not found"} />
+                element: <Error h1={"Page Not Found"} p={"This Page Is Not Found"} />
             }
         ],
 

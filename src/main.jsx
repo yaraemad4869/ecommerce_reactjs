@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import "./components/Il8next/I8next.jsx"
 import App from './App.jsx'
 import './index.css'
 

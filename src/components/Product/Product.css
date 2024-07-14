@@ -6,3 +6,11 @@ button {
     width: 90%;
     margin: auto;
 }
+
+:root {
+    --dark-box-shadow: rgba(255, 255, 255, 0.7)
+}
+
+.darkShadow {
+    box-shadow: var(--dark-box-shadow) !important;
+}

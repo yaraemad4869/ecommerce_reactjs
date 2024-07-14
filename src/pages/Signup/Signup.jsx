@@ -4,9 +4,9 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import UrlContext from "../../context/Url/Url"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkContext from "../../context/Dark/Dark";
-
+import I8nextContext from "../../context/Il8next/I8next"
 const Signup = () => {
     const SignupSchema = Yup.object({
         firstName: Yup.string()
@@ -23,6 +23,7 @@ const Signup = () => {
         password: Yup.string().required('Required').min(8).max(16).matches(/^[A-Za-z][0-9]*/, "password should start with letters and can contain number"),
         confirmPassword: Yup.string().required('Required').oneOf([Yup.ref("password")], "The two passwords are different")
     });
+    const { t } = useContext(I8nextContext)
     const Url = useContext(UrlContext)
     const [loading, setLoading] = useState(false)
     const [apiError, setApiError] = useState("")
@@ -65,9 +66,9 @@ const Signup = () => {
             <div style={{ margin: "150px 0px 80px" }}>
                 <div className="container">
                     <div className={"text-" + (isDark ? "white" : "black")}>
-                        <h2 className="mb-4">Sign Up</h2>
+                        <h2 className="mb-4 text-capitalize">{t("sign up")}</h2>
                         <form onSubmit={formik.handleSubmit} className={(isDark ? "border-white" : "")}>
-                            <label htmlFor="firstName"><h3>first name</h3></label>
+                            <label htmlFor="firstName"><h3>{t("First Name")}</h3></label>
                             <input className="rounded-5" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} onBlur={(e) => {
                                 formik.handleBlur(e)
                                 if (formik.values.firstName && formik.values.firstName != '' && formik.values.firstName != null) {
@@ -81,10 +82,10 @@ const Signup = () => {
                                 else {
                                     e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                 }
-                            }} id="firstName" placeholder="Enter First Name..." />
+                            }} id="firstName" placeholder={t("Enter") + " " + t("First Name") + "..."} />
                             {formik.errors.firstName && formik.values.firstName != '' && formik.values.firstName != null ? <p className="text-danger">{formik.errors.firstName}</p> : null}
 
-                            <label htmlFor="lastName"><h3>last name</h3></label>
+                            <label htmlFor="lastName"><h3>{t("Last Name")}</h3></label>
                             <input className="rounded-5" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} onBlur={(e) => {
                                 formik.handleBlur(e)
                                 if (formik.values.lastName && formik.values.lastName != '' && formik.values.lastName != null) {
@@ -98,11 +99,11 @@ const Signup = () => {
                                 else {
                                     e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                 }
-                            }} id="lastName" placeholder="Enter Last Name..." />
+                            }} id="lastName" placeholder={t("Enter") + " " + t("Last Name") + "..."} />
                             {formik.errors.lastName && formik.values.lastName != '' && formik.values.lastName != null ? <p className="text-danger">{formik.errors.lastName}</p> : null}
 
 
-                            <label htmlFor="age"><h3>age</h3></label>
+                            <label htmlFor="age"><h3>{t("Age")}</h3></label>
                             <input className="rounded-5" name="age" value={formik.values.age} onChange={formik.handleChange} onBlur={(e) => {
                                 formik.handleBlur(e)
                                 if (formik.values.age && formik.values.age != '' && formik.values.age != null) {
@@ -116,10 +117,10 @@ const Signup = () => {
                                 else {
                                     e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                 }
-                            }} id="age" placeholder="Enter Age..." />
+                            }} id="age" placeholder={t("Enter") + " " + t("Age") + "..."} />
                             {formik.errors.age && formik.values.age != '' && formik.values.age != null ? <p className="text-danger">{formik.errors.age}</p> : null}
 
-                            <label htmlFor="phoneNumber"><h3>Phone Number</h3></label>
+                            <label htmlFor="phoneNumber"><h3>{t("Phone Number")}</h3></label>
                             <input className="rounded-5" name="phoneNumber" value={formik.values.phoneNumber} onChange={formik.handleChange} onBlur={(e) => {
                                 formik.handleBlur(e)
                                 if (formik.values.phoneNumber && formik.values.phoneNumber != '' && formik.values.phoneNumber != null) {
@@ -133,10 +134,10 @@ const Signup = () => {
                                 else {
                                     e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                 }
-                            }} id="phoneNumber" placeholder="Enter Phone Number..." />
+                            }} id="phoneNumber" placeholder={t("Enter") + " " + t("Phone Number") + "..."} />
                             {formik.errors.phoneNumber && formik.values.phoneNumber != '' && formik.values.phoneNumber != null ? <p className="text-danger">{formik.errors.phoneNumber}</p> : null}
 
-                            <label htmlFor="email"><h3>email</h3></label>
+                            <label htmlFor="email"><h3>{t("Email")}</h3></label>
                             <input className="rounded-5" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={(e) => {
                                 formik.handleBlur(e)
                                 if (formik.values.email && formik.values.email != '' && formik.values.email != null) {
@@ -150,10 +151,10 @@ const Signup = () => {
                                 else {
                                     e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                 }
-                            }} type="email" id="email" placeholder="Enter Email..." />
+                            }} type="email" id="email" placeholder={t("Enter") + " " + t("Email") + "..."} />
                             {formik.errors.email && formik.values.email != '' && formik.values.email != null ? <p className="text-danger">{formik.errors.email}</p> : null}
                             <div className="position-relative">
-                                <label htmlFor="password"><h3>password</h3></label>
+                                <label htmlFor="password"><h3>{t("Password")}</h3></label>
                                 <input className="rounded-5"
                                     name="password"
                                     type={isVisiblePass ? "text" : "password"}
@@ -174,7 +175,7 @@ const Signup = () => {
                                         }
                                     }}
                                     id="password"
-                                    placeholder="Enter Password..." />
+                                    placeholder={t("Enter") + " " + t("Password") + "..."} />
                                 {formik.values.password && formik.values.password != '' && formik.values.password != null
                                     && <div>{
                                         isVisiblePass ? <div className="material-symbols-outlined position-absolute" onClick={() => { setIsVisiblePass(!isVisiblePass) }}>
@@ -191,7 +192,7 @@ const Signup = () => {
 
 
                             <div className="position-relative">
-                                <label htmlFor="confirmPassword"><h3>confirm password</h3></label>
+                                <label htmlFor="confirmPassword"><h3>{t("Confirm") + " " + t("Password")}</h3></label>
                                 <input className="rounded-5" name="confirmPassword" type={isVisibleConfirm ? "text" : "password"}
                                     value={formik.values.confirmPassword} onChange={formik.handleChange} onBlur={(e) => {
                                         formik.handleBlur(e)
@@ -206,7 +207,7 @@ const Signup = () => {
                                         else {
                                             e.target.style.border = "0.5px solid rgba(0, 0, 0, 0.514)"
                                         }
-                                    }} id="confirmPassword" placeholder="Confirm Password..." />
+                                    }} id="confirmPassword" placeholder={t("Confirm") + " " + t("Password") + "..."} />
 
                                 {formik.values.confirmPassword && formik.values.confirmPassword != '' && formik.values.confirmPassword != null
                                     && <div>{
@@ -222,8 +223,9 @@ const Signup = () => {
                             {formik.errors.confirmPassword && formik.values.confirmPassword != '' && formik.values.confirmPassword != null ? <p className="text-danger">{formik.errors.confirmPassword}</p> : null}
 
 
-                            <button type="submit" disabled={!(formik.isValid && formik.dirty)} className={"rounded-5 w-100 fw-bold text-capitalize btn btn-" + (isDark ? "warning" : "danger")}>sign up</button>
+                            <button type="submit" disabled={!(formik.isValid && formik.dirty)} className={"rounded-5 w-100 fw-bold text-capitalize btn btn-" + (isDark ? "warning" : "danger")}>{t("sign up")}</button>
                         </form>
+                        <h5 className={"text-center text-capitalize mt-3 "}>{t("Already have an account")} ? <Link className={isDark ? "text-warning" : "text-danger"} to="/login">{t("login")}</Link></h5>
                     </div>
                 </div>
             </div>

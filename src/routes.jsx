@@ -13,6 +13,7 @@ import Products from "./pages/Products/Products";
 import Featured from "./pages/Featured/Featured";
 import TopRated from "./pages/TopRated/TopRated";
 import Popular from "./pages/Popular/Popular";
+import RequireAuth from "./components/RequireAuth/RequireAuth";
 
 const routes = createBrowserRouter([
     {
@@ -68,7 +69,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/cart",
-                element: <Cart />,
+                element: <RequireAuth><Cart /></RequireAuth>,
                 errorElement: <Error h1={"Can't Show Cart"} p={"Sorry, Our team are working on this problem , please try soon..."} />
             },
             {

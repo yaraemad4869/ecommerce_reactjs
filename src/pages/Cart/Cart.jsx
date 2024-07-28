@@ -26,7 +26,7 @@ const Cart = () => {
     }
 
     try {
-        if (!isLogin) {
+        if (isLogin) {
             if (Object.keys(cart).length != 0) {
 
                 return (
